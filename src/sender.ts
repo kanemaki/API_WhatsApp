@@ -8,13 +8,15 @@ class Sender {
     }
 
     async sendText(to: string, body: string){
-
-      this.client.sendText(to, body)
+      await this.client.sendText(to, body)
     }
 
-    async sendButton(phone: string, title: string, buttons: any, description: string){
+    async sendButton(phone: string, title: string, description: string, buttons: any){
+      await this.client.sendButtons(phone, title, description, buttons)
+    }
 
-      await this.client.sendButtons(phone, title, buttons, description)
+    async sendLink(phone: string, link: string, title: string, message: string){
+      await this.client.sendLinkPreview(phone, link, title, message)
     }
 
     private initialize() {        
