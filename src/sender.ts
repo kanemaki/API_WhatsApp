@@ -12,25 +12,14 @@ class Sender {
       this.client.sendText(to, body)
     }
 
-    async sendButton(phone: string, title: string, description: string, buttons: any){
+    async sendButton(phone: string, title: string, buttons: any, description: string){
 
-      this.client.sendButtons(phone, title, description, buttons)
+      await this.client.sendButtons(phone, title, buttons, description)
     }
 
     private initialize() {        
         const start = (client: Whatsapp) => {
-            this.client = client
-            //this.sendText("@c.us","ola aqui e o both kanemaki!")
-
-            const buttons = [
-              { "buttonText": 
-                { "displayText": "Sim!!!!"}
-              },
-              { "buttonText":
-                { "displayText": "SIM COM  CERTEZA!!!!"}
-              }]
-
-            this.sendButton("55@c.us", "Quiz do kanemaki", "Voce e um consolista?", buttons)
+            this.client = client            
         }
 
         create(
