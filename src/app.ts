@@ -52,6 +52,33 @@ app.post('/sendLink', async(req: Request, res: Response) => {
     }    
 })
 
+app.post('/sendListMenu', async(req: Request, res: Response) => {   
+    const {to, title, subTitle, description, buttonText, menu} = req.body 
+
+    try {
+        await sender.sendListMenu(to, title, subTitle, description, buttonText, menu) 
+        
+        return res.status(200).json()
+   
+    } catch (error) {
+        console.error("error", error)
+        res.status(500).json({status: "error", message: error})
+    }    
+})
+
+app.get('/sendPoll', async(req: Request, res: Response) => {   
+    const {to, poll} = req.body 
+
+    try {
+        await sender.sendPoll(to, poll) 
+        
+        return res.status(200).json()
+   
+    } catch (error) {
+        console.error("error", error)
+        res.status(500).json({status: "error", message: error})
+    }    
+})
 
 app.listen(5000, () => {
     console.log("Server started")

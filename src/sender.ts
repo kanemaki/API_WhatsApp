@@ -11,12 +11,20 @@ class Sender {
       await this.client.sendText(to, body)
     }
 
-    async sendButton(phone: string, title: string, description: string, buttons: any){
+    async sendButton(phone: string, title: string, description: string, buttons: Array<any>){
       await this.client.sendButtons(phone, title, description, buttons)
     }
 
     async sendLink(phone: string, link: string, title: string, message: string){
       await this.client.sendLinkPreview(phone, link, title, message)
+    }
+
+    async sendListMenu(to: string, title: string, subTitle: string, description: string, buttonText: string, menu: Array<any> ){
+      await this.client.sendListMenu(to, title, subTitle, description, buttonText, menu)
+    }
+
+    async sendPoll(to: string, poll: Array<any> ){
+      await this.client.sendPollCreation(to,  poll)
     }
 
     private initialize() {        
